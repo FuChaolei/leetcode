@@ -59,16 +59,23 @@
  */
 
 // @lc code=start
-class Solution {
-public:
-    vector<int> twoSum(vector<int>& nums, int target) {
-        int count = 
-        for (size_t i = 0; i < count; i++)
-        {
-            /* code */
-        }
-
-    }
-};
+// class Solution
+// {
+// public:
+//     vector<int> twoSum(vector<int> &nums, int target)
+//     {
+//         int count = nums.size();
+//         for (int i = 0; i < count; i++)
+//         {
+//             for (int j = i + 1; j < count; j++)
+//             {
+//                 if (nums[i] + nums[j] == target)
+//                 {
+//                     return {i, j};
+//                 }
+//             }
+//         }
+//         return {};
+//     }
+// };
 // @lc code=end
-
