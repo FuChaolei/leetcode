@@ -78,4 +78,23 @@
 //         return {};
 //     }
 // };
+class Solution
+{
+public:
+    vector<int> twoSum(vector<int> &nums, int target)
+    {
+        unordered_map<int, int> hashtable;
+        int count = nums.size();
+        for (int i = 0; i < count; i++)
+        {
+            auto it = hashtable.find(target - nums[i]);
+            if (it != hashtable.end())
+            {
+                return {it->second, i};
+            }
+            hashtable[nums[i]] = i;
+        }
+        return {};
+    }
+};
 // @lc code=end
