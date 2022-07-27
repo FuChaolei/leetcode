@@ -74,21 +74,22 @@ func isValid(s string) bool {
 	if len(s)%2 != 0 {
 		return false
 	}
-	st := []rune{}
-	pairs := map[rune]rune{
+	st := []byte{}
+	pairs := map[byte]byte{
 		'}': '{',
 		']': '[',
 		')': '(',
 	}
-	for _, a := range s {
-		if pairs[a] > 0 {
-			if len(st) == 0 || st[len(st)-1] != pairs[a] {
+	n := len(s)
+	for i := 0; i < n; i++ {
+		if pairs[s[i]] > 0 {
+			if len(st) == 0 || st[len(st)-1] != pairs[s[i]] {
 				return false
 			} else {
 				st = st[:len(st)-1]
 			}
 		} else {
-			st = append(st, a)
+			st = append(st, s[i])
 		}
 	}
 	return len(st) == 0
