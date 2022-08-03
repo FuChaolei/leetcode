@@ -76,18 +76,36 @@
  *     Right *TreeNode
  * }
  */
+// func inorderTraversal(root *TreeNode) []int {
+// 	var res []int
+// 	var inorder func(*TreeNode)
+// 	inorder = func(node *TreeNode) {
+// 		if node == nil {
+// 			return
+// 		}
+// 		inorder(node.Left)
+// 		res = append(res, node.Val)
+// 		inorder(node.Right)
+// 	}
+// 	inorder(root)
+// 	return res
+// }
+//迭代
 func inorderTraversal(root *TreeNode) []int {
 	var res []int
-	var inorder func(*TreeNode)
-	inorder = func(node *TreeNode) {
-		if node == nil {
-			return
+	var st []*TreeNode
+	cur := root
+	for len(st) > 0 || cur != nil {
+		if cur != nil {
+			st = append(st, cur)
+			cur = cur.Left
+		} else {
+			cur = st[len(st)-1]
+			res = append(res, cur.Val)
+			st = st[:len(st)-1]
+			cur = cur.Right
 		}
-		inorder(node.Left)
-		res = append(res, node.Val)
-		inorder(node.Right)
 	}
-	inorder(root)
 	return res
 }
 
