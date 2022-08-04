@@ -61,6 +61,17 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    res = []
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        if root ==None:
+            return self.res
+        cur = root
+        self.inorderTraversal(cur.left)
+        self.res.append(cur.val)
+        self.inorderTraversal(cur.right)
+        return self.res
+            
+# class Solution:
+#     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
 # @lc code=end
 
