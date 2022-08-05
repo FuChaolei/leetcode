@@ -77,13 +77,15 @@
 
 // @lc code=start
 class MyQueue {
+private:
+    stack<int> s1;
+    stack<int> s2;
 public:
     MyQueue() {
-
     }
     
     void push(int x) {
-
+        
     }
     
     int pop() {
