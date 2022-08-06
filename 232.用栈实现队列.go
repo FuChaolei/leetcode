@@ -1,5 +1,5 @@
 /*
- * @lc app=leetcode.cn id=232 lang=cpp
+ * @lc app=leetcode.cn id=232 lang=golang
  *
  * [232] 用栈实现队列
  *
@@ -76,74 +76,43 @@
  */
 
 // @lc code=start
-class MyQueue
-{
-private:
-    stack<int> s1;
-    stack<int> s2;
+type MyQueue struct {
 
-public:
-    MyQueue()
-    {
-    }
+}
 
-    void push(int x)
-    {
-        s1.push(x);
-    }
 
-    int pop()
-    {
-        if (!s2.empty())
-        {
-            int tmp = s2.top();
-            s2.pop();
-            return tmp;
-        }
-        while (!s1.empty())
-        {
-            int tmp = s1.top();
-            s1.pop();
-            s2.push(tmp);
-        }
-        int tmp = s2.top();
-        s2.pop();
-        return tmp;
-    }
+func Constructor() MyQueue {
 
-    int peek()
-    {
-        if (!s2.empty())
-        {
-            int tmp = s2.top();
-            return tmp;
-        }
-        while (!s1.empty())
-        {
-            int tmp = s1.top();
-            s1.pop();
-            s2.push(tmp);
-        }
-        int tmp = s2.top();
-        return tmp;
-    }
+}
 
-    bool empty()
-    {
-        if (s1.empty() && s2.empty())
-        {
-            return true;
-        }
-        return false;
-    }
-};
+
+func (this *MyQueue) Push(x int)  {
+
+}
+
+
+func (this *MyQueue) Pop() int {
+
+}
+
+
+func (this *MyQueue) Peek() int {
+
+}
+
+
+func (this *MyQueue) Empty() bool {
+
+}
+
 
 /**
  * Your MyQueue object will be instantiated and called as such:
- * MyQueue* obj = new MyQueue();
- * obj->push(x);
- * int param_2 = obj->pop();
- * int param_3 = obj->peek();
- * bool param_4 = obj->empty();
+ * obj := Constructor();
+ * obj.Push(x);
+ * param_2 := obj.Pop();
+ * param_3 := obj.Peek();
+ * param_4 := obj.Empty();
  */
 // @lc code=end
+
