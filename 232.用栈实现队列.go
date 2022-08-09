@@ -77,34 +77,33 @@
 
 // @lc code=start
 type MyQueue struct {
-
+	s1, s2 []int
 }
-
 
 func Constructor() MyQueue {
 
 }
 
-
-func (this *MyQueue) Push(x int)  {
-
+func (this *MyQueue) Push(x int) {
+	s1 = append(s1, x)
 }
-
 
 func (this *MyQueue) Pop() int {
-
+	if len(s2)!=0 {
+		var tmp = s2[len(s2)-1]
+		s2 = s2[:len(s2)-1]
+		return tmp
+	}
+	wh
 }
-
 
 func (this *MyQueue) Peek() int {
 
 }
 
-
 func (this *MyQueue) Empty() bool {
 
 }
-
 
 /**
  * Your MyQueue object will be instantiated and called as such:
