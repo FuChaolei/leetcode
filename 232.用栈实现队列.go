@@ -81,28 +81,48 @@ type MyQueue struct {
 }
 
 func Constructor() MyQueue {
-
+	return MyQueue{}
 }
 
 func (this *MyQueue) Push(x int) {
-	s1 = append(s1, x)
+	this.s1 = append(this.s1, x)
 }
 
 func (this *MyQueue) Pop() int {
-	if len(s2)!=0 {
-		var tmp = s2[len(s2)-1]
-		s2 = s2[:len(s2)-1]
+	if len(this.s2) != 0 {
+		var tmp = this.s2[len(this.s2)-1]
+		this.s2 = this.s2[:len(this.s2)-1]
 		return tmp
 	}
-	wh
+	for len(this.s1) > 0 {
+		var tmp = this.s1[len(this.s1)-1]
+		this.s1 = this.s1[:len(this.s1)-1]
+		this.s2 = append(this.s2, tmp)
+	}
+	var tmp = this.s2[len(this.s2)-1]
+	this.s2 = this.s2[:len(this.s2)-1]
+	return tmp
 }
 
 func (this *MyQueue) Peek() int {
-
+	if len(this.s2) != 0 {
+		var tmp = this.s2[len(this.s2)-1]
+		return tmp
+	}
+	for len(this.s1) > 0 {
+		var tmp = this.s1[len(this.s1)-1]
+		this.s1 = this.s1[:len(this.s1)-1]
+		this.s2 = append(this.s2, tmp)
+	}
+	var tmp = this.s2[len(this.s2)-1]
+	return tmp
 }
 
 func (this *MyQueue) Empty() bool {
-
+	if len(this.s2) == 0 && len(this.s1) == 0 {
+		return true
+	}
+	return false
 }
 
 /**
