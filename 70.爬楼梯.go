@@ -1,5 +1,5 @@
 /*
- * @lc app=leetcode.cn id=70 lang=cpp
+ * @lc app=leetcode.cn id=70 lang=golang
  *
  * [70] 爬楼梯
  *
@@ -50,44 +50,19 @@
  */
 
 // @lc code=start
-// class Solution
-// {
-// public:
-//     int climbStairs(int n)
-//     {
-//         if (n == 2 || n == 1)
-//         {
-//             return n;
-//         }
-//         int f = 1, s = 2;
-//         for (int i = 3; i <= n; i++)
-//         {
-//             int k = f + s;
-//             f = s;
-//             s = k;
-//         }
-//         return s;
-//     }
-// };
-//动态规划
-class Solution
-{
-public:
-    int climbStairs(int n)
-    {
+func climbStairs(n int) int {
+	if n == 1 || n == 2 {
+		return n
+	}
+	s := 1
+	f := 2
+	for i := 3; i <= n; i++ {
+		t := s
+		s = f
+		f = t + s
+	}
+	return f
+}
 
-        if (n == 2 || n == 1)
-        {
-            return n;
-        }
-        vector<int> dp(n + 1);
-        dp[1] = 1;
-        dp[2] = 2;
-        for (int i = 3; i <= n; i++)
-        {
-            dp[i] = dp[i - 1] + dp[i - 2];
-        }
-        return dp[n];
-    }
-};
 // @lc code=end
+
