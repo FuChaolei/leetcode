@@ -1,5 +1,5 @@
 /*
- * @lc app=leetcode.cn id=69 lang=cpp
+ * @lc app=leetcode.cn id=69 lang=golang
  *
  * [69] x 的平方根
  *
@@ -47,30 +47,21 @@
  */
 
 // @lc code=start
-class Solution
-{
-public:
-    int mySqrt(int x)
-    {
-        int l = 0, r = x, res = 0;
-        while (l <= r)
-        {
-            int mid = l + (r - l) / 2;
-            if ((long long)mid * mid < x)
-            {
-                res = mid;
-                l = l + 1;
-            }
-            else if ((long long)mid * mid == x)
-            {
-                return mid;
-            }
-            else
-            {
-                r = mid - 1;
-            }
-        }
-        return res;
-    }
-};
+func mySqrt(x int) int {
+	l, r, res := 0, x, 0
+	for l <= r {
+		mid := l + (r-l)/2
+		if mid*mid == x {
+			return mid
+		} else if mid*mid < x {
+			l = mid + 1
+			res = mid
+		} else {
+			r = mid - 1
+		}
+	}
+	return res
+}
+
 // @lc code=end
+
