@@ -75,17 +75,33 @@
 #         self.left = left
 #         self.right = right
 # 递归
+# class Solution:
+#     def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+#         res = []
+#         if root == None:
+#             return []
+#         def preorder(node):
+#             if node == None:
+#                 return
+#             res.append(node.val)
+#             preorder(node.left)
+#             preorder(node.right)
+#         preorder(root)
+#         return res
 class Solution:
-    global res
-
     def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        st = []
         res = []
         if root == None:
             return []
-        res.append(root.val)
-        self.preorderTraversal(root.left)
-        self.preorderTraversal(root.right)
+        st.append(root)
+        while len(st) > 0:
+            node = st[-1]
+            st = st[:-1]
+            res.append(node.val)
+            if node.right:
+                st.append(node.right)
+            if node.left:
+                st.append(node.left)
         return res
-# class Solution:
-#     def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
 # @lc code=end
