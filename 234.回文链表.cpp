@@ -62,19 +62,54 @@ class Solution
 public:
     bool isPalindrome(ListNode *head)
     {
+        if (head == nullptr)
+        {
+            return true;
+        }
         ListNode *half_head = sf_ptr(head);
-        ListNode *tail_head = reverse(half_head);
+        ListNode *tail_head = reverse(half_head->next);
+        ListNode *cur = head;
+        ListNode *cur2 = tail_head;
+        bool res = true;
+        while (res && cur2 != nullptr)
+        {
+            if (cur->val != cur2->val)
+            {
+                res = false;
+            }
+            cur = cur->next;
+            cur2 = cur2->next;
+        }
+        half_head->next = reverse(tail_head);
+        return res;
     }
     ListNode *sf_ptr(ListNode *head)
     {
         ListNode *s = head;
         ListNode *f = head;
-        while (f != nullptr && f->next != nullptr)
+        while (f->next != nullptr && f->next->next != nullptr)
         {
             s = s->next;
-            f = f->next;
-            if (f != !)
+            f = f->next->next;
         }
+        return s;
+    }
+    ListNode *reverse(ListNode *head)
+    {
+        if (head == nullptr || head->next == nullptr)
+        {
+            return head;
+        }
+        ListNode *pre = nullptr;
+        ListNode *cur = head;
+        while (cur)
+        {
+            ListNode *tmp = cur->next;
+            cur->next = pre;
+            pre = cur;
+            cur = tmp;
+        }
+        return pre;
     }
 };
 // @lc code=end
