@@ -97,7 +97,7 @@ public:
             qu.pop();
             if (tmp1 == nullptr && tmp2 == nullptr)
                 continue;
-            if ((tmp1->val != tmp2->val) || (tmp1 == nullptr || tmp2 == nullptr))
+            if ((tmp1 == nullptr || tmp2 == nullptr) || (tmp1->val != tmp2->val))
                 return false;
             qu.emplace(tmp1->left);
             qu.emplace(tmp2->right);
