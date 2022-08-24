@@ -53,7 +53,41 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def reverse(self,)
-    def isPalindrome(self, head: Optional[ListNode]) -> bool:
-# @lc code=end
+    def reverse(self, head):
+        if head == None or head.next == None:
+            return head
+        pre = None
+        cur = head
+        while cur:
+            tmp = cur.next
+            cur.next = pre
+            pre = cur
+            cur = tmp
+        return pre
 
+    def sf_ptr(self, head):
+        if head == None:
+            return head
+        s = head
+        f = head
+        while f.next != None and f.next.next != None:
+            f = f.next.next
+            s = s.next
+        return s
+
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        if head == None:
+            return True
+        halfhead = self.sf_ptr(head)
+        tailhead = self.reverse(halfhead.next)
+        f = head
+        s = tailhead
+        res = True
+        while res and s:
+            if s.val != f.val:
+                res = False
+            s = s.next
+            f = f.next
+        halfhead.next = self.reverse(tailhead)
+        return res
+# @lc code=end
