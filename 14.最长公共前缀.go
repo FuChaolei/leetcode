@@ -1,5 +1,5 @@
 /*
- * @lc app=leetcode.cn id=14 lang=cpp
+ * @lc app=leetcode.cn id=14 lang=golang
  *
  * [14] 最长公共前缀
  *
@@ -9,7 +9,7 @@
  * Easy (42.84%)
  * Likes:    2409
  * Dislikes: 0
- * Total Accepted:    916.9K
+ * Total Accepted:    917K
  * Total Submissions: 2.1M
  * Testcase Example:  '["flower","flow","flight"]'
  *
@@ -46,25 +46,16 @@
  */
 
 // @lc code=start
-class Solution
-{
-public:
-    string longestCommonPrefix(vector<string> &strs)
-    {
-        string s = "";
-        char a;
-        int count = strs[0].size();
-        for (int i = 0; i < count; i++)
-        {
-            a = strs[0][i];
-            for (int j = 0; j < strs.size(); j++)
-            {
-                if (strs[j].size()==i || strs[j][i] != a)
-                    return s;
-            }
-            s = s + a;
-        }
-        return s;
-    }
-};
+func longestCommonPrefix(strs []string) string {
+	for i := 0; i < len(strs[0]); i++ {
+		for j := 0; j < len(strs); j++ {
+			if i == len(strs[j]) || strs[0][i] != strs[j][i] {
+				return strs[j][:i]
+			}
+		}
+	}
+	return strs[0]
+}
+
 // @lc code=end
+
