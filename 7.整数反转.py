@@ -66,13 +66,14 @@ class Solution:
         res = 0
         maxint = 2**31-1
         minint = -2**31
-        while x!=0:
-            if res>maxint//10 or res<minint//10:
-                #print(res)
+        while x != 0:
+            if res > maxint//10 or res < minint//10+1:
+                # print(res)
                 return 0
-            tmp = x%10
-            x//=10
+            tmp = x % 10
+            if tmp > 0 and x < 0:
+                tmp -= 10
+            x = (x-tmp)//10
             res = res*10+tmp
         return res
 # @lc code=end
-
