@@ -66,49 +66,43 @@
  * 最多调用 2 * 10^5 次 get 和 put
  *
  *
- */
+*/
 
 // @lc code=start
 type entry struct {
-    key,value int
+	key, value int
 }
 type LRUCache struct {
-    capacity int
-    cache map[int]*list.Element
-    lst *List.list
+	capacity int
+	cache    map[int]*list.Element
+	lst      *list.List
 }
-
 
 func Constructor(capacity int) LRUCache {
-    return LRUCache{
-        capacity,map[int]*list.Element{},list.New()
-    }
+	return LRUCache{capacity, map[int]*list.Element{}, list.New()}
 }
-
 
 func (this *LRUCache) Get(key int) int {
-    e := this.cache[key]
-    if e==nil {
-        return -1
-    }
-    this.lst.MoveToFront(e)
-    return e.Value.(entry).value
+	e := this.cache[key]
+	if e == nil {
+		return -1
+	}
+	this.lst.MoveToFront(e)
+	return e.Value.(entry).value
 }
 
-
-func (this *LRUCache) Put(key int, value int)  {
-    e := this.cache[key]
-    if e!=nil {
-        e.Value.(entry).value = value
-        this.lst.MoveToFront(e)
-        return
-    }
-    this.cache[key]=this.lst.PushFront(entry{key,value})
-    if len(cache) > this.capacity {
-        delete(c.cache,c.lst.Remove(c.lst.Back()).(entry).key)
-    }
+func (this *LRUCache) Put(key int, value int) {
+	e := this.cache[key]
+	if e != nil {
+		e.Value = entry{key, value}
+		this.lst.MoveToFront(e)
+		return
+	}
+	this.cache[key] = this.lst.PushFront(entry{key, value})
+	if len(this.cache) > this.capacity {
+		delete(this.cache, this.lst.Remove(this.lst.Back()).(entry).key)
+	}
 }
-
 
 /**
  * Your LRUCache object will be instantiated and called as such:
