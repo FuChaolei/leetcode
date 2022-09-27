@@ -57,45 +57,23 @@ public:
     }
     int qsort(vector<int> &nums, int l, int r, int &k)
     {
-        for (auto i : nums)
-        {
-            cout << i << " ";
-        }
-        cout << endl;
         int m = rand() % (r - l + 1) + l;
         swap(nums[l], nums[m]);
         int t = nums[l];
         int x = l, y = r;
-        for (auto i : nums)
-        {
-            cout << i << " ";
-        }
-        cout << endl;
-        cout << "l:" << l << " r:" << r << " m:" << m << endl;
         while (x < y)
         {
-            while (nums[x] >= t && x < y)
-            {
-                x++;
-            }
             while (nums[y] <= t && x < y)
             {
                 y--;
             }
-            swap(nums[x], nums[y]);
-            for (auto i : nums)
+            while (nums[x] >= t && x < y)
             {
-                cout << i << " ";
+                x++;
             }
-            cout << endl;
+            swap(nums[x], nums[y]);
         }
         swap(nums[l], nums[x]);
-        for (auto i : nums)
-        {
-            cout << i << " ";
-        }
-        cout << endl;
-        cout << "x:" << x << endl;
         if (x == k - 1)
         {
             return nums[x];
