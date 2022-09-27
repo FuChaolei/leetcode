@@ -76,7 +76,6 @@ public:
         {
             while (nums[x] >= t && x < y)
             {
-                cout << nums[x] << endl;
                 x++;
             }
             while (nums[y] <= t && x < y)
