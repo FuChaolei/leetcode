@@ -63,25 +63,47 @@ public:
         {
             return;
         }
+        if (r - l <= 15)
+        {
+            insertsort(nums, l, r);
+            return;
+        }
         int m = rand() % (r - l + 1) + l;
         swap(nums[l], nums[m]);
         int t = nums[l];
         int x = l, y = r;
-        while (x < y)
+        int i = l + 1;
+        while (i <= y)
         {
-            while (x < y && nums[y] >= t)
+            if (nums[i] < t)
             {
+                swap(nums[x], nums[i]);
+                x++;
+                i++;
+            }
+            else if (nums[i] == t)
+            {
+                i++;
+            }
+            else
+            {
+                swap(nums[y], nums[i]);
                 y--;
             }
-            while (x < y && nums[x] <= t)
-            {
-                x++;
-            }
-            swap(nums[x], nums[y]);
         }
-        swap(nums[x], nums[l]);
         qsort(nums, l, x - 1);
-        qsort(nums, x + 1, r);
+        qsort(nums, y + 1, r);
+    }
+    void insertsort(vector<int> &nums, int l, int r)
+    {
+        for (int i = l; i <= r; i++)
+        {
+            int j = i - 1;
+            int tmp = nums[i] while (j >= l && nums[j] < nums[i])
+            {
+                nums[]
+            }
+        }
     }
 };
 // @lc code=end
