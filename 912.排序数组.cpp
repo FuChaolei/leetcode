@@ -99,10 +99,13 @@ public:
         for (int i = l; i <= r; i++)
         {
             int j = i - 1;
-            int tmp = nums[i] while (j >= l && nums[j] < nums[i])
+            int tmp = nums[i];
+            while (j >= 0 && nums[j] > tmp)
             {
-                nums[]
+                nums[j + 1] = nums[j];
+                j--;
             }
+            nums[j + 1] = tmp;
         }
     }
 };
