@@ -64,42 +64,48 @@
  *     Next *ListNode
  * }
  */
-func sortList(head *ListNode) *ListNode {
-	if head == nil || head.Next == nil {
-		return head
-	}
-	f := head.Next
-	s := head
-	for f != nil && f.Next != nil {
-		s = s.Next
-		f = f.Next.Next
-	}
-	mid := s.Next
-	s.Next = nil
-	return merge(sortList(head), sortList(mid))
-}
-func merge(l1 *ListNode, l2 *ListNode) *ListNode {
-	dummy := &ListNode{
-		Val:  0,
-		Next: nil,
-	}
-	cur := dummy
-	for l1 != nil && l2 != nil {
-		if l1.Val > l2.Val {
-			l1, l2 = l2, l1
-		}
-		cur.Next = l1
-		l1 = l1.Next
-		cur = cur.Next
-	}
-	if l1 != nil {
-		cur.Next = l1
-	}
-	if l2 != nil {
-		cur.Next = l2
-	}
-	return dummy.Next
-}
+// func sortList(head *ListNode) *ListNode {
+// 	if head == nil || head.Next == nil {
+// 		return head
+// 	}
+// 	f := head.Next
+// 	s := head
+// 	for f != nil && f.Next != nil {
+// 		s = s.Next
+// 		f = f.Next.Next
+// 	}
+// 	mid := s.Next
+// 	s.Next = nil
+// 	return merge(sortList(head), sortList(mid))
+// }
+// func merge(l1 *ListNode, l2 *ListNode) *ListNode {
+// 	dummy := &ListNode{
+// 		Val:  0,
+// 		Next: nil,
+// 	}
+// 	cur := dummy
+// 	for l1 != nil && l2 != nil {
+// 		if l1.Val > l2.Val {
+// 			l1, l2 = l2, l1
+// 		}
+// 		cur.Next = l1
+// 		l1 = l1.Next
+// 		cur = cur.Next
+// 	}
+// 	if l1 != nil {
+// 		cur.Next = l1
+// 	}
+// 	if l2 != nil {
+// 		cur.Next = l2
+// 	}
+// 	return dummy.Next
+// }
 
+func sortList(head *ListNode) *ListNode {
+	if head==nil || head.Next==nil {
+		return head;
+	}
+}
+func merge(l1 *ListNode,l2 *ListNode) 
 // @lc code=end
 

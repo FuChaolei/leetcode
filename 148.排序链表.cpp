@@ -123,13 +123,32 @@ public:
         {
             return head;
         }
-        ListNode *l = head;
-        ListNode *f = head->next;
-        while (f && f->next)
+        int len = 1;
+        ListNode *cur = head;
+        while (cur = cur->next)
         {
-            f = f->next->next;
-            s = s->next;
+            len++;
         }
+        ListNode dummy(0);
+        dummy.next = head;
+        ListNode *l;
+        ListNode *r;
+        ListNode *tail;
+        for (int i = 1; i < len; i <<= 1)
+        {
+            cur = dummy.next;
+            tail = &dummy;
+            while (cur)
+            {
+                l = cur;
+                r = splist(l, i);
+                cur = splist(r, i);
+                auto merged = merge(l, r);
+                tail->next = merged.first;
+                tail = merged.second;
+            }
+        }
+        return dummy.next;
     }
     ListNode *splist(ListNode *head, int n)
     {
