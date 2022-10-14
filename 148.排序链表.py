@@ -88,38 +88,59 @@
 #         mid = s.next
 #         s.next = None
 #         return merge(self.sortList(head), self.sortList(mid))
+
+
 class Solution:
     def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        def split(head,n):
-            while n>1 and head!=None:
+        def split(head, n):
+            while n > 1 and head != None:
                 head = head.next
-                n-=1
-            if head!=None:
+                n -= 1
+            if head != None:
                 res = head.next
             else:
                 res = None
             if head != None:
                 head.next = None
             return res
-        def merge(l1,l2):
+
+        def merge(l1, l2):
             dummy = ListNode(0)
             tail = dummy
-            while l1!=None and l2!=None:
-                if l1.val>l2.val:
-                    l1,l2 = l2,l1
+            while l1 != None and l2 != None:
+                if l1.val > l2.val:
+                    l1, l2 = l2, l1
                 tail.next = l1
                 l1 = l1.next
                 tail = tail.next
-            if l1!=None:
+            if l1 != None:
                 tail.next = l1
-            if l2!=None:
+            if l2 != None:
                 tail.next = l2
-            while tail.next!=None:
+            while tail.next != None:
                 tail = tail.next
-            return [dummy.next,tail]
+            return [dummy.next, tail]
         if head == None or head.next == None:
             return head
+        dummy = ListNode(0)
+        dummy.next = head
         cur = head
         len = 0
-        while cur!=None
+        while cur != None:
+            cur = cur.next
+            len += 1
+        i = 1
+        while i < len:
+            cur = dummy.next
+            tail = dummy
+            while cur != None:
+                l = cur
+                r = split(l, i)
+                cur = split(r, i)
+                merged = merge(l, r)
+                tail.next = merged[0]
+                tail = merged[1]
+            i <<= 1
+        return dummy.next
+
 # @lc code=end
