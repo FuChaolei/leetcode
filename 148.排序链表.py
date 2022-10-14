@@ -62,30 +62,64 @@
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
+# class Solution:
+#     def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+#         def merge(l1, l2):
+#             dummy = ListNode(0)
+#             cur = dummy
+#             while l1 != None and l2 != None:
+#                 if l1.val > l2.val:
+#                     l1, l2 = l2, l1
+#                 cur.next = l1
+#                 l1 = l1.next
+#                 cur = cur.next
+#             if l1 != None:
+#                 cur.next = l1
+#             if l2 != None:
+#                 cur.next = l2
+#             return dummy.next
+#         if head == None or head.next == None:
+#             return head
+#         s = head
+#         f = head.next
+#         while f != None and f.next != None:
+#             f = f.next.next
+#             s = s.next
+#         mid = s.next
+#         s.next = None
+#         return merge(self.sortList(head), self.sortList(mid))
 class Solution:
     def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        def merge(l1, l2):
+        def split(head,n):
+            while n>1 and head!=None:
+                head = head.next
+                n-=1
+            if head!=None:
+                res = head.next
+            else:
+                res = None
+            if head != None:
+                head.next = None
+            return res
+        def merge(l1,l2):
             dummy = ListNode(0)
-            cur = dummy
-            while l1 != None and l2 != None:
-                if l1.val > l2.val:
-                    l1, l2 = l2, l1
-                cur.next = l1
+            tail = dummy
+            while l1!=None and l2!=None:
+                if l1.val>l2.val:
+                    l1,l2 = l2,l1
+                tail.next = l1
                 l1 = l1.next
-                cur = cur.next
-            if l1 != None:
-                cur.next = l1
-            if l2 != None:
-                cur.next = l2
-            return dummy.next
+                tail = tail.next
+            if l1!=None:
+                tail.next = l1
+            if l2!=None:
+                tail.next = l2
+            while tail.next!=None:
+                tail = tail.next
+            return [dummy.next,tail]
         if head == None or head.next == None:
             return head
-        s = head
-        f = head.next
-        while f != None and f.next != None:
-            f = f.next.next
-            s = s.next
-        mid = s.next
-        s.next = None
-        return merge(self.sortList(head), self.sortList(mid))
+        cur = head
+        len = 0
+        while cur!=None
 # @lc code=end
