@@ -101,11 +101,22 @@
 // 	return dummy.Next
 // }
 
+type pair struct {
+	first *ListNode
+	second *ListNode
+}
+
 func sortList(head *ListNode) *ListNode {
-	if head==nil || head.Next==nil {
-		return head;
+	if head == nil || head.Next == nil {
+		return head
 	}
 }
-func merge(l1 *ListNode,l2 *ListNode) 
+func merge(l1 *ListNode, l2 *ListNode) *pair
+{
+	dummy := &ListNode{
+		Val:0,
+		Next:nil,
+	}
+}
 // @lc code=end
 
