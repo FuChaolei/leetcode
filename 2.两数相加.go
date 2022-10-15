@@ -1,16 +1,16 @@
 /*
- * @lc app=leetcode.cn id=2 lang=cpp
+ * @lc app=leetcode.cn id=2 lang=golang
  *
  * [2] 两数相加
  *
- * https://leetcode-cn.com/problems/add-two-numbers/description/
+ * https://leetcode.cn/problems/add-two-numbers/description/
  *
  * algorithms
- * Medium (41.25%)
- * Likes:    7408
+ * Medium (42.13%)
+ * Likes:    8766
  * Dislikes: 0
- * Total Accepted:    1.1M
- * Total Submissions: 2.8M
+ * Total Accepted:    1.5M
+ * Total Submissions: 3.6M
  * Testcase Example:  '[2,4,3]\n[5,6,4]'
  *
  * 给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。
@@ -58,32 +58,39 @@
 // @lc code=start
 /**
  * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
  */
-class Solution
-{
-public:
-    ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
-    {
-        ListNode dummy(0);
-        ListNode *cur = &dummy;
-        int sum = 0;
-        while (l1 || l2 || sum)
-        {
-            sum += (l1 ? l1->val : 0) + (l2 ? l2->val : 0);
-            cur->next = new ListNode(sum % 10);
-            sum = sum / 10;
-            l1 = l1 ? l1->next : nullptr;
-            l2 = l2 ? l2->next : nullptr;
-            cur = cur->next;
-        }
-        return dummy.next;
-    }
-};
+func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
+	sum := 0
+	dummy := &ListNode{
+		Val: 0,
+	}
+	cur := dummy
+	for l1 != nil || l2 != nil || sum != 0 {
+		if l1 != nil && l2 != nil {
+			sum = sum + l1.Val + l2.Val
+		} else if l1 != nil {
+			sum = sum + l1.Val
+		} else if l2 != nil {
+			sum = sum + l2.Val
+		}
+		cur.Next = &ListNode{
+			Val: sum % 10,
+		}
+		sum = sum / 10
+		cur = cur.Next
+		if l1 != nil {
+			l1 = l1.Next
+		}
+		if l2 != nil {
+			l2 = l2.Next
+		}
+	}
+	return dummy.Next
+}
+
 // @lc code=end
+
