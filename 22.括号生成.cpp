@@ -59,7 +59,7 @@ public:
             res.emplace_back(s);
             return;
         }
-        if (l < r)
+        if (l > r)
         {
             return;
         }
