@@ -80,13 +80,24 @@ func restoreIpAddresses(s string) []string {
 			if check(s, i, len(s)-1) {
 				res = append(res, s)
 			}
+			return
 		}
 		for j := i; j < len(s); j++ {
 			if check(s, i, j) {
 				p++
+				s1 := s[:j+1]
+				s2 := s[j+1 : len(s)]
+				s = s1 + "." + s2
+				dfs(s, j+2, p)
+				s = s1 + s2
+				p--
+			} else {
+				break
 			}
 		}
 	}
+	dfs(s, 0, 0)
+	return res
 }
 func check(s string, b int, e int) bool {
 	if b > e {
@@ -95,7 +106,7 @@ func check(s string, b int, e int) bool {
 	if s[b] == '0' && e > b {
 		return false
 	}
-	if e-b > 3 {
+	if e-b >= 3 {
 		return false
 	}
 	for i := b; i <= e; i++ {
@@ -103,7 +114,8 @@ func check(s string, b int, e int) bool {
 			return false
 		}
 	}
-	if int(s[b:e+1]) > 255 {
+	tmp, _ := strconv.Atoi(s[b : e+1])
+	if tmp > 255 {
 		return false
 	}
 	return true
