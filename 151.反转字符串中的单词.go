@@ -75,8 +75,15 @@ func reverseWords(s string) string {
 			if idx!=0 {
 				res+=" "
 			}
+			end := start
+			for end<n && s[end]!=' ' {
+				res[idx++] += s[end++]
+			}
+			
+			start = end
 		}
 	}
+	return res
 }
 // @lc code=end
 
