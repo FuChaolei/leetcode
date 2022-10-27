@@ -67,7 +67,38 @@
 
 # @lc code=start
 class Solution:
+    def reverse(l,left,right):
+        while left<right:
+            l[left],l[right] = l[right],l[left]
+            left+=1
+            right-=1
+    def reverse_word(l):
+        left = 0
+        right = 0
+        while right<len(l):
+            while l[right]!=' ':
+                right+=1
+            reverse(l,left,right-1)
+            right+=1
+            left = right
     def reverseWords(self, s: str) -> str:
-        
+        l = self.ownstrip(s)
+        l = self.reverse(l,0,len(l)-1)
+        self.reverse_word(l)
+        return
+    def ownstrip(s):
+        l = []
+        n = len(s)
+        left,right = 0,n-1
+        while left<n and s[left]==' ':
+            left+=1
+        while right>=0 and s[right]==' ':
+            right-=1
+        while right>=left:
+            if s[left]!=' ':
+                l.append(s[left])
+            elif l[-1]!=' ':
+                l.append(' ')
+        return l
 # @lc code=end
 
