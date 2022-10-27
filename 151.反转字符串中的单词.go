@@ -66,7 +66,52 @@
  */
 
 // @lc code=start
-func reverseWords(s string) string {
+func reverse(l *[]byte, left int, right int) {
+	for left < right {
+		(*l)[left], (*l)[right] = (*l)[right], (*l)[left]
+		left++
+		right--
+	}
 }
+func s_strip(s string) []byte {
+	left := 0
+	n := len(s)
+	right := n - 1
+	l := []byte{}
+	for left < n && s[left] == ' ' {
+		left++
+	}
+	for right >= 0 && s[right] == ' ' {
+		right--
+	}
+	for left <= right {
+		if s[left] != ' ' {
+			l = append(l, s[left])
+		} else if l[len(l)-1] != ' ' {
+			l = append(l, s[left])
+		}
+		left++
+	}
+	return l
+}
+func reverse_w(l *[]byte) {
+	left := 0
+	r := 0
+	for r < len(l) {
+		for r < len(l) && (*l)[r] != ' ' {
+			r++
+		}
+		reverse(&l, left, r-1)
+		r += 1
+		left = r
+	}
+}
+func reverseWords(s string) string {
+	l := s_strip(s)
+	reverse(&l, 0, len(l)-1)
+	reverse_w(&l)
+	return string(l[:])
+}
+
 // @lc code=end
 
