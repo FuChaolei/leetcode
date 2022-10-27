@@ -67,23 +67,6 @@
 
 // @lc code=start
 func reverseWords(s string) string {
-	res := ""
-	n:=len(s)
-	idx:=0
-	for start:=0;start<n;start++ {
-		if s[start]!=' ' {
-			if idx!=0 {
-				res+=" "
-			}
-			end := start
-			for end<n && s[end]!=' ' {
-				res[idx++] += s[end++]
-			}
-			
-			start = end
-		}
-	}
-	return res
 }
 // @lc code=end
 
