@@ -97,11 +97,11 @@ func s_strip(s string) []byte {
 func reverse_w(l *[]byte) {
 	left := 0
 	r := 0
-	for r < len(l) {
-		for r < len(l) && (*l)[r] != ' ' {
+	for r < len(*l) {
+		for r < len(*l) && (*l)[r] != ' ' {
 			r++
 		}
-		reverse(&l, left, r-1)
+		reverse(l, left, r-1)
 		r += 1
 		left = r
 	}
