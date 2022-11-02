@@ -76,18 +76,29 @@ class Solution
 public:
     ListNode *mergeKLists(vector<ListNode *> &lists)
     {
+        int n = lists.size() - 1;
+        return merge(lists, 0, n);
     }
 
 private:
-    ListNode *merge(vector<ListNode *> &list, int l, int r)
+    ListNode *merge(vector<ListNode *> &lists, int l, int r)
     {
+        if (l > r)
+        {
+            return nullptr;
+        }
         if (l == r)
         {
-            return list[l];
+            return lists[l];
         }
-        if (l - r == 1 || r - l == 1)
+        if (l == r - 1)
         {
+            return mergeTwo(lists[l], lists[r]);
         }
+        int mid = l + (r - l) / 2;
+        auto left = merge(lists, l, mid);
+        auto right = merge(lists, mid + 1, r);
+        return mergeTwo(left, right);
     }
     ListNode *mergeTwo(ListNode *l1, ListNode *l2)
     {
@@ -98,7 +109,7 @@ private:
         {
             if (l1->val < l2->val)
             {
-                cur->nect = l1;
+                cur->next = l1;
                 l1 = l1->next;
             }
             else
