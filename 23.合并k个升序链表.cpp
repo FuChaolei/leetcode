@@ -71,16 +71,52 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-class Solution {
+class Solution
+{
 public:
-    ListNode* mergeKLists(vector<ListNode*>& lists) {
-
+    ListNode *mergeKLists(vector<ListNode *> &lists)
+    {
     }
+
 private:
-    ListNode* mergeTwo(ListNode* l1,ListNode* l2){
-        dummy = ListNode(0)
-        while(l1&&l2)
+    ListNode *merge(vector<ListNode *> &list, int l, int r)
+    {
+        if (l == r)
+        {
+            return list[l];
+        }
+        if (l - r == 1 || r - l == 1)
+        {
+        }
+    }
+    ListNode *mergeTwo(ListNode *l1, ListNode *l2)
+    {
+        // ListNode dummy = ListNode(0);
+        ListNode dummy(0);
+        ListNode *cur = &dummy;
+        while (l1 && l2)
+        {
+            if (l1->val < l2->val)
+            {
+                cur->nect = l1;
+                l1 = l1->next;
+            }
+            else
+            {
+                cur->next = l2;
+                l2 = l2->next;
+            }
+            cur = cur->next;
+        }
+        if (l1)
+        {
+            cur->next = l1;
+        }
+        if (l2)
+        {
+            cur->next = l2;
+        }
+        return dummy.next;
     }
 };
 // @lc code=end
-
