@@ -71,18 +71,30 @@ class Solution
 public:
     ListNode *reverseKGroup(ListNode *head, int k)
     {
+        if (!head || k == 1)
+        {
+            return head;
+        }
         ListNode dummy(0);
         dummy.next = head;
-        ListNode *pre = &dummy;
-        ListNode *cur = head;
-        while (cur)
+        int len = 1;
+        while (head = head->next)
         {
-            ListNode *tail = cur->next;
-            cur->next = pre;
-            pre = cur;
-            cur = tail;
+            len++;
         }
-        return pre;
+        for (int i = 0; i + k <= len; i++)
+        {
+            ListNode *cur = pre->next;
+            ListNode *nxt = cur->next;
+            for (int i = 1; i < k; i++)
+            {
+                cur->next = nxt->next;
+                nxt->next = cur;
+                pre->next = nxt;
+                nxt = cur->next
+            }
+            pre = cur;
+        }
     }
 };
 // @lc code=end
