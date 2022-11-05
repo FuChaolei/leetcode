@@ -79,10 +79,9 @@ public:
         dummy.next = head;
         int len = 1;
         while (head = head->next)
-        {
             len++;
-        }
-        for (int i = 0; i + k <= len; i++)
+        ListNode *pre = &dummy;
+        for (int l = 0; l + k <= len; l += k)
         {
             ListNode *cur = pre->next;
             ListNode *nxt = cur->next;
@@ -91,10 +90,11 @@ public:
                 cur->next = nxt->next;
                 nxt->next = cur;
                 pre->next = nxt;
-                nxt = cur->next
+                nxt = cur->next;
             }
             pre = cur;
         }
+        return dummy.next;
     }
 };
 // @lc code=end
