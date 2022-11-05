@@ -66,34 +66,62 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+// class Solution
+// {
+// public:
+//     ListNode *reverseKGroup(ListNode *head, int k)
+//     {
+//         if (!head || k == 1)
+//         {
+//             return head;
+//         }
+//         ListNode dummy(0);
+//         dummy.next = head;
+//         int len = 1;
+//         while (head = head->next)
+//         {
+//             len++;
+//         }
+//         for (int i = 0; i + k <= len; i++)
+//         {
+//             ListNode *cur = pre->next;
+//             ListNode *nxt = cur->next;
+//             for (int i = 1; i < k; i++)
+//             {
+//                 cur->next = nxt->next;
+//                 nxt->next = cur;
+//                 pre->next = nxt;
+//                 nxt = cur->next
+//             }
+//             pre = cur;
+//         }
+//     }
+// };
 class Solution
 {
 public:
     ListNode *reverseKGroup(ListNode *head, int k)
     {
-        if (!head || k == 1)
-        {
+        if(!head||k==1){
             return head;
         }
         ListNode dummy(0);
         dummy.next = head;
+        ListNode *pre = &dummy;
         int len = 1;
-        while (head = head->next)
+        while(head = head->next)
         {
             len++;
         }
-        for (int i = 0; i + k <= len; i++)
-        {
+        for (int i = 0; i + k <= len;i++){
             ListNode *cur = pre->next;
             ListNode *nxt = cur->next;
-            for (int i = 1; i < k; i++)
-            {
+            for (int l = 1; l < k;l++){
                 cur->next = nxt->next;
-                nxt->next = cur;
+                nxt->next = pre->next;
                 pre->next = nxt;
-                nxt = cur->next
+                nxt = cur->next;
             }
-            pre = cur;
         }
     }
 };
