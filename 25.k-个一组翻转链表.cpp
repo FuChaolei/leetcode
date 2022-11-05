@@ -66,63 +66,53 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-// class Solution
-// {
-// public:
-//     ListNode *reverseKGroup(ListNode *head, int k)
-//     {
-//         if (!head || k == 1)
-//         {
-//             return head;
-//         }
-//         ListNode dummy(0);
-//         dummy.next = head;
-//         int len = 1;
-//         while (head = head->next)
-//         {
-//             len++;
-//         }
-//         for (int i = 0; i + k <= len; i++)
-//         {
-//             ListNode *cur = pre->next;
-//             ListNode *nxt = cur->next;
-//             for (int i = 1; i < k; i++)
-//             {
-//                 cur->next = nxt->next;
-//                 nxt->next = cur;
-//                 pre->next = nxt;
-//                 nxt = cur->next
-//             }
-//             pre = cur;
-//         }
-//     }
-// };
 class Solution
 {
 public:
     ListNode *reverseKGroup(ListNode *head, int k)
     {
-        if(!head||k==1){
+        //[1,2,3,4,5]\n3
+        if (!head || k == 1)
+        {
             return head;
         }
         ListNode dummy(0);
         dummy.next = head;
         ListNode *pre = &dummy;
         int len = 1;
-        while(head = head->next)
+        while (head = head->next)
         {
             len++;
         }
-        for (int i = 0; i + k <= len;i++){
+        int i;
+        for (i = 0; i + k <= len; i += k)
+        {
             ListNode *cur = pre->next;
             ListNode *nxt = cur->next;
-            for (int l = 1; l < k;l++){
+            for (int l = 1; l < k; l++)
+            {
                 cur->next = nxt->next;
                 nxt->next = pre->next;
                 pre->next = nxt;
                 nxt = cur->next;
             }
+            pre = cur;
         }
+        //剩下的也翻转
+        // int tail = len - i;
+        // if (tail > 1 && tail < k)
+        // {
+        //     ListNode *cur = pre->next;
+        //     ListNode *nxt = cur->next;
+        //     for (int l = 1; l < tail; l++)
+        //     {
+        //         cur->next = nxt->next;
+        //         nxt->next = pre->next;
+        //         pre->next = nxt;
+        //         nxt = cur->next;
+        //     }
+        // }
+        return dummy.next;
     }
 };
 // @lc code=end
