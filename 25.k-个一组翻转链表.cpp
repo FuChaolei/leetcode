@@ -13,9 +13,9 @@
  * Total Submissions: 607.7K
  * Testcase Example:  '[1,2,3,4,5]\n2'
  *
- * 给你链表的头节点 head ，每 k 个节点一组进行翻转，请你返回修改后的链表。
+ * 给你链表的头节点 head ，每 k 个节点一组进行翻转，请你返回修改后的链表。
  *
- * k 是一个正整数，它的值小于或等于链表的长度。如果节点总数不是 k 的整数倍，那么请将最后剩余的节点保持原有顺序。
+ * k 是一个正整数，它的值小于或等于链表的长度。如果节点总数不是 k 的整数倍，那么请将最后剩余的节点保持原有顺序。
  *
  * 你不能只是单纯的改变节点内部的值，而是需要实际进行节点交换。
  *
@@ -66,35 +66,63 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+// class Solution
+// {
+// public:
+//     ListNode *reverseKGroup(ListNode *head, int k)
+//     {
+//         if (!head || k == 1)
+//         {
+//             return head;
+//         }
+//         ListNode dummy(0);
+//         dummy.next = head;
+//         int len = 1;
+//         while (head = head->next)
+//         {
+//             len++;
+//         }
+//         for (int i = 0; i + k <= len; i++)
+//         {
+//             ListNode *cur = pre->next;
+//             ListNode *nxt = cur->next;
+//             for (int i = 1; i < k; i++)
+//             {
+//                 cur->next = nxt->next;
+//                 nxt->next = cur;
+//                 pre->next = nxt;
+//                 nxt = cur->next
+//             }
+//             pre = cur;
+//         }
+//     }
+// };
 class Solution
 {
 public:
     ListNode *reverseKGroup(ListNode *head, int k)
     {
-        if (!head || k == 1)
-        {
+        if(!head||k==1){
             return head;
         }
         ListNode dummy(0);
         dummy.next = head;
-        int len = 1;
-        while (head = head->next)
-            len++;
         ListNode *pre = &dummy;
-        for (int l = 0; l + k <= len; l += k)
+        int len = 1;
+        while(head = head->next)
         {
+            len++;
+        }
+        for (int i = 0; i + k <= len;i++){
             ListNode *cur = pre->next;
             ListNode *nxt = cur->next;
-            for (int i = 1; i < k; i++)
-            {
+            for (int l = 1; l < k;l++){
                 cur->next = nxt->next;
-                nxt->next = cur;
+                nxt->next = pre->next;
                 pre->next = nxt;
                 nxt = cur->next;
             }
-            pre = cur;
         }
-        return dummy.next;
     }
 };
 // @lc code=end
