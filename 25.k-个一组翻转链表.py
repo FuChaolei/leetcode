@@ -63,8 +63,24 @@
 #         self.next = next
 class Solution:
     def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        if not head or k==1:
+            return head
         dummy = ListNode(0)
         dummy.next = head
         pre = dummy
+        len = 0
+        while head:
+            head = head.next
+            len+=1
+        for i in range(0,len-k+1,k):
+            cur = pre.next
+            nxt = cur.next
+            for l in range(1,k):
+                cur.next = nxt.next
+                nxt.next = pre.next
+                pre.next = nxt
+                nxt = cur.next
+            pre = cur
+        return dummy.next
 # @lc code=end
 
