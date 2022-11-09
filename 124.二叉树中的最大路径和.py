@@ -58,5 +58,16 @@
 class Solution:
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
         res = -inf
+        def maxS(root):
+            nonlocal res
+            if root==None:
+                return 0
+            l = max(0,maxS(root.left))
+            r = max(0,maxS(root.right))
+            sum = l+r+root.val
+            res = max(sum,res)
+            return max(l,r)+root.val
+        maxS(root)
+        return res
 # @lc code=end
 
