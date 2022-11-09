@@ -57,10 +57,14 @@
  *     Right *TreeNode
  * }
  */
+
+//import "math"
 func maxPathSum(root *TreeNode) int {
-	res:=math.MinInt32
-	maxS(root,&res)
-	return res
+    var ans int
+	ans=math.MinInt32
+    //fmt.Println(ans)
+	maxS(root,&ans)
+	return ans
 }
 func maxS(root *TreeNode,res *int)int{
 	if root==nil {
@@ -69,7 +73,7 @@ func maxS(root *TreeNode,res *int)int{
 	l:=max(0,maxS(root.Left,res))
 	r:=max(0,maxS(root.Right,res))
 	sum := l+r+root.Val
-	*res := max(*res,num)
+	*res = max(*res,sum)
 	return max(l,r)+root.Val
 }
 func max(a int,b int)int{
