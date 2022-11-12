@@ -109,6 +109,14 @@ public:
         int l1 = word1.size();
         int l2 = word2.size();
         vector<vector<int>> dp(l1 + 1, vector<int>(l2 + 1, -1));
+        for (int i = 0; i <= l1;i++){
+            dp[i][0] = i;
+        }
+        for (int i = 0; i <= l2; i++)
+        {
+            dp
+        }
+
     }
 
 };
