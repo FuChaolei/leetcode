@@ -89,15 +89,24 @@ public:
         {
             int m1 = l + (r - l) / 2;
             int m2 = k - m1;
-            if (nums1[m1] < nums2[m2])
+            if (nums1[m1] < nums2[m2 - 1])
             {
                 l = m1 + 1;
             }
             else
             {
-                r =
+                r = m1;
             }
         }
+        int m1 = l;
+        int m2 = k - l;
+        int c1 = max(m1 == 0 ? INT_MIN : nums1[m1 - 1], m2 == 0 ? INT_MIN : nums2[m2 - 1]);
+        int c2 = min(m1 == n1 ? INT_MAX : nums1[m1], m2 == n2 ? INT_MAX : nums2[m2]);
+        if ((n1 + n2) % 2 == 1)
+        {
+            return c1;
+        }
+        return (c1 + c2) * 1.0 / 2;
     }
 };
 // @lc code=end
