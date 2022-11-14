@@ -72,25 +72,32 @@
  */
 
 // @lc code=start
-class Solution {
+class Solution
+{
 public:
-    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+    double findMedianSortedArrays(vector<int> &nums1, vector<int> &nums2)
+    {
         int n1 = nums1.size();
         int n2 = nums2.size();
-        if(n1>n2){
+        if (n1 > n2)
+        {
             return findMedianSortedArrays(nums2, nums1);
         }
         int l = 0, r = n1;
         int k = (n1 + n2 + 1) / 2;
-        int m1 = l + (r - l) / 2;
-        int m2 = k - m1;
-        while(l<r){
-            if(nums1[m1]<nums2[m2])
+        while (l < r)
+        {
+            int m1 = l + (r - l) / 2;
+            int m2 = k - m1;
+            if (nums1[m1] < nums2[m2])
             {
-                
+                l = m1 + 1;
+            }
+            else
+            {
+                r =
             }
         }
     }
 };
 // @lc code=end
-
