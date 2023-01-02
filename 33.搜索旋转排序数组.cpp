@@ -60,6 +60,7 @@
  */
 
 // @lc code=start
+// 官方题解
 class Solution
 {
 public:
@@ -82,7 +83,7 @@ public:
             if (nums[0] <= nums[mid])
             {
                 if (nums[0] <= target && target < nums[mid])
-                { //有序部分
+                { // 有序部分
                     r = mid - 1;
                 }
                 else
@@ -93,7 +94,7 @@ public:
             else
             {
                 if (nums[mid] < target && target <= nums[n - 1])
-                { //有序部分
+                { // 有序部分
                     l = mid + 1;
                 }
                 else
