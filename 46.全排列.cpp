@@ -51,25 +51,31 @@
  */
 
 // @lc code=start
-class Solution {
+class Solution
+{
 public:
-    vector<vector<int>> permute(vector<int>& nums) {
+    vector<vector<int>> permute(vector<int> &nums)
+    {
         vector<vector<int>> res;
         const int n = nums.size();
         vector<int> path;
         vector<int> used(n);
-        function<void(int)> dfs = [&](int l) {
-            if(l==n){
+        function<void(int)> dfs = [&](int l)
+        {
+            if (l == n)
+            {
                 res.emplace_back(path);
                 return;
             }
-            for (int i = 0; i < n;i++){
-                if(used[i]){
+            for (int i = 0; i < n; i++)
+            {
+                if (used[i])
+                {
                     continue;
                 }
                 used[i] = 1;
                 path.emplace_back(nums[i]);
-                dfs(l+1);
+                dfs(l + 1);
                 path.pop_back();
                 used[i] = 0;
             }
@@ -79,4 +85,3 @@ public:
     }
 };
 // @lc code=end
-
