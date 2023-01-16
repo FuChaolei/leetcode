@@ -75,10 +75,12 @@ public:
         dummy.next = head;
         ListNode *p = &dummy;
         ListNode *l = head;
-        while(n--){
+        while (n--)
+        {
             l = l->next;
         }
-        while(l){
+        while (l)
+        {
             p = p->next;
             l = l->next;
         }
