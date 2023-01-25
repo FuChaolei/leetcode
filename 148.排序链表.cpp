@@ -67,53 +67,53 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-//空间log(n),时间nlog(n)
-// class Solution
-// {
-// public:
-//     ListNode *sortList(ListNode *head)
-//     {
-//         if (!head || !head->next)
-//         {
-//             return head;
-//         }
-//         ListNode *s = head, *f = head->next;
-//         while (f != nullptr && f->next != nullptr)
-//         {
-//             s = s->next;
-//             f = f->next->next;
-//         }
-//         ListNode *mid = s->next;
-//         s->next = nullptr;
-//         return merge(sortList(head), sortList(mid));
-//         // return merge(head, mid);
-//     }
-//     ListNode *merge(ListNode *l1, ListNode *l2)
-//     {
-//         ListNode dummy(0);
-//         ListNode *cur = &dummy;
-//         while (l1 && l2)
-//         {
-//             if (l1->val > l2->val)
-//             {
-//                 swap(l1, l2);
-//             }
-//             cur->next = l1;
-//             l1 = l1->next;
-//             cur = cur->next;
-//         }
-//         if (l1)
-//         {
-//             cur->next = l1;
-//         }
-//         if (l2)
-//         {
-//             cur->next = l2;
-//         }
-//         return dummy.next;
-//     }
-// };
-//空间O(1),时间nlog(n)
+// 空间log(n),时间nlog(n)
+//  class Solution
+//  {
+//  public:
+//      ListNode *sortList(ListNode *head)
+//      {
+//          if (!head || !head->next)
+//          {
+//              return head;
+//          }
+//          ListNode *s = head, *f = head->next;
+//          while (f != nullptr && f->next != nullptr)
+//          {
+//              s = s->next;
+//              f = f->next->next;
+//          }
+//          ListNode *mid = s->next;
+//          s->next = nullptr;
+//          return merge(sortList(head), sortList(mid));
+//          // return merge(head, mid);
+//      }
+//      ListNode *merge(ListNode *l1, ListNode *l2)
+//      {
+//          ListNode dummy(0);
+//          ListNode *cur = &dummy;
+//          while (l1 && l2)
+//          {
+//              if (l1->val > l2->val)
+//              {
+//                  swap(l1, l2);
+//              }
+//              cur->next = l1;
+//              l1 = l1->next;
+//              cur = cur->next;
+//          }
+//          if (l1)
+//          {
+//              cur->next = l1;
+//          }
+//          if (l2)
+//          {
+//              cur->next = l2;
+//          }
+//          return dummy.next;
+//      }
+//  };
+// 空间O(1),时间nlog(n)
 class Solution
 {
 public:
