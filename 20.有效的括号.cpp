@@ -77,7 +77,7 @@ public:
     {
         if (s.size() % 2 != 0)
             return false;
-        unordered_map<char, char> pairs = {
+        unordered_map<char, char> pairs{
             {'}', '{'},
             {']', '['},
             {')', '('}};
