@@ -69,6 +69,8 @@ public:
             int k = b >= 0 ? num2[b] - '0' : 0;
             int res = j + k + add;
             ans.push_back('0' + res % 10);
+            // char tmp = '0' + res % 10;
+            // ans = tmp + ans;
             add = res / 10;
             a--;
             b--;

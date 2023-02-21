@@ -79,6 +79,7 @@ public:
         int n = lists.size() - 1;
         return merge(lists, 0, n);
     }
+
 private:
     ListNode *merge(vector<ListNode *> &lists, int l, int r)
     {

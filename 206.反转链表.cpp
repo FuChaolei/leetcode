@@ -67,32 +67,35 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-//迭代
-// class Solution
-// {
-// public:
-//     ListNode *reverseList(ListNode *head)
-//     {
-//         if (head == nullptr || head->next == nullptr){
-//             return head;
-//         }
-//         ListNode *cur = head;
-//         ListNode *pre = nullptr;
-//         while (cur)
-//         {
-//             ListNode *tmp = cur->next;
-//             cur->next = pre;
-//             pre = cur;
-//             cur = tmp;
-//         }
-//         return pre;
-//     }
-// };
-//递归
-class Solution {
+// 迭代
+//  class Solution
+//  {
+//  public:
+//      ListNode *reverseList(ListNode *head)
+//      {
+//          if (head == nullptr || head->next == nullptr){
+//              return head;
+//          }
+//          ListNode *cur = head;
+//          ListNode *pre = nullptr;
+//          while (cur)
+//          {
+//              ListNode *tmp = cur->next;
+//              cur->next = pre;
+//              pre = cur;
+//              cur = tmp;
+//          }
+//          return pre;
+//      }
+//  };
+// 递归
+class Solution
+{
 public:
-    ListNode* reverseList(ListNode* head) {
-        if (head == nullptr || head->next == nullptr){
+    ListNode *reverseList(ListNode *head)
+    {
+        if (head == nullptr || head->next == nullptr)
+        {
             return head;
         }
         ListNode *newhead = reverseList(head->next);
