@@ -73,26 +73,26 @@
 // 	return check(root, root)
 // }
 func isSymmetric(root *TreeNode) bool {
-	if root==nil {
+	if root == nil {
 		return true
 	}
 	var qu []*TreeNode
-	qu = append(qu,root)
-	qu = append(qu,root)
-	for len(qu)>0 {
+	qu = append(qu, root)
+	qu = append(qu, root)
+	for len(qu) > 0 {
 		tmp1 := qu[0]
 		tmp2 := qu[1]
 		qu = qu[2:]
-		if tmp1==nil && tmp2==nil {
+		if tmp1 == nil && tmp2 == nil {
 			continue
 		}
-		if tmp1==nil || tmp2==nil || tmp1.Val!=tmp2.Val {
+		if tmp1 == nil || tmp2 == nil || tmp1.Val != tmp2.Val {
 			return false
 		}
-		qu = append(qu,tmp1.Left)
-		qu = append(qu,tmp2.Right)
-		qu = append(qu,tmp1.Right)
-		qu = append(qu,tmp2.Left)
+		qu = append(qu, tmp1.Left)
+		qu = append(qu, tmp2.Right)
+		qu = append(qu, tmp1.Right)
+		qu = append(qu, tmp2.Left)
 	}
 	return true
 }

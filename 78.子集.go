@@ -44,23 +44,23 @@
  *
  *
  */
-
+//https://leetcode.cn/problems/subsets/solution/dai-ma-sui-xiang-lu-78-zi-ji-hui-su-sou-6yfk6/
 // @lc code=start
 func subsets(nums []int) [][]int {
 	res := [][]int{}
 	path := []int{}
-	var backtrace func([]int, int)
-	backtrace = func(nums []int, start int) {
+	var backtrace func(int)
+	backtrace = func(start int) {
 		var tmp = make([]int, len(path))
 		copy(tmp, path)
 		res = append(res, tmp)
 		for i := start; i < len(nums); i++ {
 			path = append(path, nums[i])
-			backtrace(nums, i+1)
+			backtrace(i + 1)
 			path = path[:len(path)-1]
 		}
 	}
-	backtrace(nums, 0)
+	backtrace(0)
 	return res
 }
 

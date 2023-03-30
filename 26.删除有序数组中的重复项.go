@@ -79,14 +79,14 @@ func removeDuplicates(nums []int) int {
 	l, r := 0, 1
 	for r < len(nums) {
 		if nums[l] != nums[r] {
-			if r-l>1 {
+			if r-l > 1 {
 				nums[l+1] = nums[r]
 			}
 			l++
 		}
 		r++
 	}
-	return l+1
+	return l + 1
 }
 
 // @lc code=end

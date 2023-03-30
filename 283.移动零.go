@@ -58,6 +58,10 @@ func moveZeroes(nums []int) {
 			nums[j] = tmp
 			j = j + 1
 		}
+		for t := 0; t < len(nums); t++ {
+			fmt.Printf("%d ", nums[t])
+		}
+		fmt.Println("")
 	}
 }
 

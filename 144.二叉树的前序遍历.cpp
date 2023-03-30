@@ -79,21 +79,21 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-//递归
-// class Solution {
-// public:
-//     vector<int> res;
-//     vector<int> preorderTraversal(TreeNode* root) {
-//         if (root == nullptr){
-//             return res;
-//         }
-//         res.emplace_back(root->val);
-//         preorderTraversal(root->left);
-//         preorderTraversal(root->right);
-//         return res;
-//     }
-// };
-//迭代
+// 递归
+//  class Solution {
+//  public:
+//      vector<int> res;
+//      vector<int> preorderTraversal(TreeNode* root) {
+//          if (root == nullptr){
+//              return res;
+//          }
+//          res.emplace_back(root->val);
+//          preorderTraversal(root->left);
+//          preorderTraversal(root->right);
+//          return res;
+//      }
+//  };
+// 迭代
 class Solution
 {
 public:

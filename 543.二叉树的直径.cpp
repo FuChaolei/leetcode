@@ -59,8 +59,8 @@ public:
         }
         int left = deep(root->left);
         int right = deep(root->right);
-        res = max(res,left+right+1);
-        return max(left,right)+1;
+        res = max(res, left + right);
+        return max(left, right) + 1;
     }
     int diameterOfBinaryTree(TreeNode *root)
     {

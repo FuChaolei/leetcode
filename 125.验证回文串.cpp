@@ -78,7 +78,6 @@ public:
                 }
                 r--;
                 l++;
-                3
             }
         }
         return true;

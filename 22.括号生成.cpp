@@ -40,8 +40,8 @@
  *
  *
  */
-
-// @lc code=start
+// https://leetcode.cn/problems/generate-parentheses/solution/hui-su-suan-fa-by-liweiwei1419/
+//  @lc code=start
 class Solution
 {
 public:
